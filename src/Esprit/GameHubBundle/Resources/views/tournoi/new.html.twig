@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="contact" class="container">
+        <h3 class="text-center">Crée Tournoi</h3>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="row">
+
+
+            <div class="col-md-4">
+
+                <div class="row">
+
+                    <div class="col-sm-8 form-group">
+                        <!--  champ date -->
+                        {{ form_errors(form.dateTournoi) }}
+                        {{ form_label(form.dateTournoi) }}
+                        {{ form_widget(form.dateTournoi) }}
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--  champ heure -->
+                        {{ form_errors(form.heureTournoi) }}
+                        {{ form_label(form.heureTournoi) }}
+                        {{ form_widget(form.heureTournoi) }}
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-8">
+
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <!--  champ nom -->
+                        {{ form_errors(form.nom) }}
+                        <label for="gamehub_corebundle_tournoi_nom" class="required" style="margin-left : -5px; ">
+                            <p>Nom du tournoi: </p>
+                        </label>
+                        {{ form_widget(form.nom) }}
+                    </div>
+
+                    <div class="col-sm-6 form-group">
+                        <!-- champ jeu -->
+                        {{ form_errors(form.jeu) }}
+                        <label for="gamehub_corebundle_tournoi_jeu" class="required" style="margin-left : 23px; ">
+                            <p>Nom du jeu : </p>
+                        </label>
+                        {{ form_widget(form.jeu) }}
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <!-- champ lieu -->
+                        {{ form_errors(form.lieu) }}
+                        <label for="gamehub_corebundle_tournoi_lieu" class="required">
+                            <p>Lieu du tournoi: </p>
+                        </label>
+                        {{ form_widget(form.lieu) }}
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!-- champ nombre participant -->
+                        {{ form_errors(form.nombeParticipant) }}
+                        <label for="gamehub_corebundle_tournoi_nombeParticipant" class="required">
+                            <p>N° Participants :</p>
+                        </label>
+                        {{ form_widget(form.nombeParticipant) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <button class="btn pull-right" type="submit">Create</button>
+                    </div>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <!--  champ image -->
+                    {{ form_errors(form.image) }}
+                    {{ form_label(form.image) }}
+                    {{ form_widget(form.image) }}
+                </div>
+                {{ form_end(form) }}
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <a href="{{ path('tournoi_index') }}">
+                            <span class="btn pull-right"> Back to the list</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <iframe id="googleMap" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12762.890238311616!2d10.186470479992678!3d36.89698489759963!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x683b3ab5565cd357!2sEsprit+Pr%C3%A9pa!5e0!3m2!1sfr!2stn!4v1491969881153" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+{% endblock %}

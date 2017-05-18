@@ -1,0 +1,41 @@
+{% extends "base2.html.twig" %}
+
+{% block body %}
+
+
+
+<div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+ <div class="panel-heading templatemo-position-relative">
+    <h2>Sujet Du Forum </h2>
+</div>
+    <table class="table table-striped table-bordered" border="1">
+
+        <tr  class="panel-heading templatemo-position-relative">
+            <div >
+            <td > <span>Sujet</span></td>
+            <td><span> Contenu</span></td>
+            <td><span> Membre </span></td>
+            <td><span>Date </span></td>
+                <td>Activer </td>
+            </div>
+        </tr>
+
+        {% for n in forum %}
+
+            <tr>
+                <div>
+
+                    <td><a href="#">{{ n.titre }} </a></td>
+                    <td>  <span>{{ n.membreId.username }}</span></td>
+                    <td><span>{{ n.contenu }}</span></td>
+                    <td>{{ n.date| date('d M,Y') }}</td>
+                    <td>{{ n.enable }}</td>
+                </div>
+            </tr>
+
+        {% endfor %}
+
+    </table>
+    </div>
+    </div>
+{% endblock body %}

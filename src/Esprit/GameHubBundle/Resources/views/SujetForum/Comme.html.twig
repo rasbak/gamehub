@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h2>Signler le sujet <b>{{ sujet.titre }} </b></h2>
+<form method="post" action="{{ path('esprit_game_hub_signaler', {'id': sujet.id}) }}">
+    <input type="text" name="cause">
+    <input type="submit" >
+</form>
+
+{% endblock body %}

@@ -1,0 +1,27 @@
+.form-label-left{
+    width:150px !important;
+}
+.form-line{
+    padding-top:12px;
+    padding-bottom:12px;
+}
+.form-label-right{
+    width:150px !important;
+}
+body, html{
+    margin:0;
+    padding:0;
+    background:rgba(4, 19, 13, 0.79);
+}
+
+.form-all{
+    margin:0px auto;
+    padding-top:0px;
+    width:550px;
+    color:rgb(255, 255, 255) !important;
+    font-family:'Libre Baskerville';
+    font-size:16px;
+}
+.form-radio-item label, .form-checkbox-item label, .form-grading-label, .form-header{
+    color: #555;
+}

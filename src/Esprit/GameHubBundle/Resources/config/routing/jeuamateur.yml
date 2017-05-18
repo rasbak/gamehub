@@ -1,0 +1,36 @@
+jeuamateur_index:
+    path:     /
+    defaults: { _controller: "EspritGameHubBundle:JeuAmateur:index" }
+    methods:  [GET, POST]
+
+jeuamateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "EspritGameHubBundle:JeuAmateur:show" }
+    methods:  GET
+
+jeuamateur_new:
+    path:     /new
+    defaults: { _controller: "EspritGameHubBundle:JeuAmateur:new" }
+    methods:  [GET, POST]
+
+jeuamateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EspritGameHubBundle:JeuAmateur:edit" }
+    methods:  [GET, POST]
+
+jeuamateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EspritGameHubBundle:JeuAmateur:delete" }
+    methods:  DELETE
+
+demandes_show_comments:
+    path:     /{id}/showcom
+    defaults: { _controller: "EspritGameHubBundle:JeuAmateur:showAvecComments" }
+    options:
+        expose: true
+
+jeuamateur_comments_notif:
+    path:     /{id}/showcomnot
+    defaults: { _controller: "EspritGameHubBundle:JeuAmateur:showCommentsNotif" }
+    options:
+        expose: true

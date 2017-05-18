@@ -1,0 +1,82 @@
+<?php
+
+namespace Esprit\GameHubBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Membre
+ *
+ * @ORM\Table(name="membre", uniqueConstraints={@ORM\UniqueConstraint(name="pseudo", columns={"pseudo"})})
+ * @ORM\Entity
+ */
+class Membre
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=20, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pseudo", type="string", length=20, nullable=false)
+     */
+    private $pseudo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=20, nullable=false)
+     */
+    private $mdp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=15, nullable=false)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="console", type="string", length=10, nullable=false)
+     */
+    private $console;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=10, nullable=false)
+     */
+    private $role;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

@@ -1,0 +1,33 @@
+esprit_game_hub_jeuamateur:
+    resource: "@EspritGameHubBundle/Resources/config/routing/JeuAmateur.yml"
+    prefix:   /JeuAmateur
+
+esprit_game_hub_reclamation:
+    resource: "@EspritGameHubBundle/Resources/config/routing/Reclamation.yml"
+    prefix:   /Reclamation
+
+esprit_game_hub_accessoire:
+    resource: "@EspritGameHubBundle/Resources/config/routing/Accessoire.yml"
+    prefix:   /Accessoire
+
+esprit_game_hub_jeu:
+    resource: "@EspritGameHubBundle/Resources/config/routing/jeu.yml"
+    prefix:   /Jeu
+
+esprit_game_hub_forum:
+    resource: "@EspritGameHubBundle/Resources/config/routing/forum.yml"
+    prefix:   /Forum
+
+esprit_game_hub_homepage:
+    path:     /
+    defaults: { _controller: EspritGameHubBundle:Default:index }
+
+commenter:
+    path :    commenter/{id}/{contenu}
+    defaults: { _controller: EspritGameHubBundle:Default:commenter }
+    options:
+        expose: true
+
+notifications:
+    path :    /notifier
+    defaults: { _controller: EspritGameHubBundle:Default:notifier }

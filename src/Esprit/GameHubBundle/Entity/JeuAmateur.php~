@@ -1,0 +1,68 @@
+<?php
+
+namespace Esprit\GameHubBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JeuAmateur
+ *
+ * @ORM\Table(name="jeu_amateur", uniqueConstraints={@ORM\UniqueConstraint(name="nom", columns={"nom"})})
+ * @ORM\Entity
+ */
+class JeuAmateur
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=200, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="evaluation", type="integer", nullable=false)
+     */
+    private $evaluation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=20, nullable=false)
+     */
+    private $categorie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="membre", type="string", length=50, nullable=false)
+     */
+    private $membre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lien", type="string", length=100, nullable=false)
+     */
+    private $lien;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

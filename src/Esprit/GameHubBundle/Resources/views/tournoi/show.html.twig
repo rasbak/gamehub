@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="contact" class="bg-1">
+        <div class="container">
+
+
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="thumbnail">
+                    <img src="{{ asset('uploads/images/') }}{{ tournoi.image }}" width="100%" height="300">
+
+                    <div class="col-sm-12 col-lg-offset-2">
+                        <p><strong> Nom :</strong>{{ tournoi.nom }}</p>
+                        <p><strong>Jeu :</strong>{{ tournoi.jeu }}</p>
+                        <p><strong>Lieu :</strong>{{ tournoi.lieu }}</p>
+                        <p><strong>Date :</strong>
+                            {% if tournoi.dateTournoi %}
+                                {{ tournoi.dateTournoi|date('Y-m-d') }}
+                            {% endif %}
+                        </p>
+                        <p><strong>Heure :</strong>
+                            {% if tournoi.heureTournoi %}
+                                {{ tournoi.heureTournoi |date('H:i:s') }}
+                            {% endif %}
+                        </p>
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-8" >
+                            {{ form_start(delete_form) }}
+                            <button class="btn  pull-right" type="submit">Supprimer</button>
+                            {{ form_end(delete_form) }}
+                            <a href="{{ path('tournoi_edit', { 'id': tournoi.id }) }}">
+                                <span class="btn pull-right">Modifier</span></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8 form-group">
+                            <a href="{{ path('tournoi_index') }}">
+                                <span class="btn">Liste Tournois</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

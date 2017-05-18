@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+<br><br>
+    <div id="tournoi" class="bg-1">
+        {% if msg is defined %}
+            <div class="well col-sm-4 col-sm-offset-4"> <span style="color: #5d7591">{{ msg }}</span></div>
+        {% endif %}
+
+        <div class="container">
+            {% for tournoi in tournois %}
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        <img src="{{ asset('uploads/images/') }}{{ tournoi.image }}" width="400" height="300">
+                        <div class="col-sm-12 col-lg-offset-2">
+                            <p><strong> Nom :</strong>{{ tournoi.nom }}</p>
+                            <p><strong>Jeu :</strong>{{ tournoi.jeu }}</p>
+                            <p><strong>Lieu :</strong>{{ tournoi.lieu }}</p>
+                            <p><strong>Date :</strong>
+                                {% if tournoi.dateTournoi %}
+                                    {{ tournoi.dateTournoi|date('Y-m-d') }}
+                                {% endif %}
+                            </p>
+
+                        </div>
+                        <div class="btn-group col-sm-offset-2">
+                            <form method="post" action="{{ path('inscription_tournoi') }}">
+                                <input type="hidden" name="nomTournoi" value="{{ tournoi.nom }}">
+                                <button class="btn">Inscription</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+{% endblock %}

@@ -1,0 +1,282 @@
+{% extends 'base.html.twig' %}
+      {% block bgbody %}
+          body{
+          background-image: url({{ asset("images/luffy.jpg") }});
+
+          padding-top: 50px;
+          }
+      {% endblock %}
+{% block body %}
+
+
+    <h1> Ajout Accessoires</h1>
+
+    <div class="well" style="filter:alpha(opacity=50); opacity:0.8;">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.nomProduit, "Nom : ", {'label_attr': {'class': 'col-sm-3  control-label'}}) }}
+
+            {{ form_errors(form.nomProduit) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(form.nomProduit, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.prixProduit, "prixProduit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {{ form_errors(form.prixProduit) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(form.prixProduit, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.longueur, "Image du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {{ form_errors(form.longueur) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(form.longueur, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+        </div>
+
+
+        <div class="form-group" id="typeCombo" onchange="selectionner()">
+            {{ form_label(form.typeProduit, "typeProduit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {{ form_errors(form.typeProduit) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(form.typeProduit, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+        </div>
+
+
+<div id="PC" style="display: none;">
+        <div class="form-group">
+            {{ form_label(form.processeurP, "processeurP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {{ form_errors(form.processeurP) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(form.processeurP, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+        </div>
+
+    <div class="form-group">
+        {{ form_label(form.disqueDurP, "disqueDurP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.disqueDurP) }}
+
+        <div class="col-sm-4">
+            {{ form_widget(form.disqueDurP, {'attr': {'class': 'form-control'}}) }}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.memoireP, "memoireP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.memoireP) }}
+
+        <div class="col-sm-4">
+            {{ form_widget(form.memoireP, {'attr': {'class': 'form-control'}}) }}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.carteGraphiqueP, "carteGraphiqueP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.carteGraphiqueP) }}
+
+        <div class="col-sm-4">
+            {{ form_widget(form.carteGraphiqueP, {'attr': {'class': 'form-control'}}) }}
+
+        </div>
+    </div>
+</div>
+
+
+
+
+        <div id="Clavier" style="display: none;">
+
+            <div class="form-group">
+                {{ form_label(form.nomClavier, "nomClavier : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.nomClavier) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.nomClavier, {'attr': {'class': 'form-control'}}) }}
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="Souris" style="display: none;">
+
+            <div class="form-group">
+                {{ form_label(form.nomSouris, "nomSouris : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.nomSouris) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.nomSouris, {'attr': {'class': 'form-control'}}) }}
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div id="Casque" style="display: none;">
+
+
+            <div class="form-group">
+                {{ form_label(form.typeCasque, "typeCasque : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.typeCasque) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.typeCasque, {'attr': {'class': 'form-control'}}) }}
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.nomCasque, "nomCasque : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.nomCasque) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.nomCasque, {'attr': {'class': 'form-control'}}) }}
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.systemAcoustique, "systemAcoustique : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.systemAcoustique) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.systemAcoustique, {'attr': {'class': 'form-control'}}) }}
+
+                </div>
+            </div>
+
+        </div>
+        <div id="commun" style="display: none;">
+
+            <div class="form-group">
+                {{ form_label(form.longueurCable, "longueurCable : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.longueurCable) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.longueurCable, {'attr': {'class': 'form-control'}}) }}
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.poids, "poids : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.poids) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.poids, {'attr': {'class': 'form-control'}}) }}
+
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+
+        <div class="form-group" align="middle">
+            <button type="submit"  class="btn btn-danger"><span class="glyphicon glyphicon-floppy-disk"></span>  Ajouter</button>
+        </div>
+
+        {{ form_rest(form) }}
+
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(form) }}
+    </div>
+
+    <ul>
+
+    </ul>
+
+
+    <div align="middle">
+        <a  data-toggle="modal"  class="btn btn-danger" href="{{ path('accessoire_index') }}">
+            <span class="glyphicon"></span>Retour à la liste</a>
+    </div>
+
+
+    <script type="text/javascript">
+
+
+      function selectionner() {
+          var pc = document.getElementById("PC");
+          var souris = document.getElementById("Souris");
+          var Casque = document.getElementById("Casque");
+          var Clavier = document.getElementById("Clavier");
+          var commun = document.getElementById("commun");
+          var cb = document.getElementById("esprit_gamehubbundle_accessoire_typeProduit");
+
+          if (cb.value=="") {
+              pc.style.display = "none";
+              souris.style.display="none";
+              Casque.style.display="none";
+              commun.style.display = "none";
+              Clavier.style.display="none"
+          }
+          if (cb.value=="Pc") {
+              pc.style.display = "block";
+              souris.style.display="none";
+              Casque.style.display="none";
+              commun.style.display = "none";
+              Clavier.style.display="none"
+          }
+           if (cb.value=="Souris") {
+              pc.style.display = "none";
+              souris.style.display = "block";
+              commun.style.display = "block";
+              Casque.style.display = "none";
+              Clavier.style.display = "none"
+          }
+           if (cb.value=="Casque") {
+              pc.style.display = "none";
+              souris.style.display = "none";
+              Casque.style.display = "block";
+              commun.style.display = "none";
+              Clavier.style.display = "none"
+          }
+           if (cb.value=="Clavier") {
+              pc.style.display = "none";
+              souris.style.display="none";
+              Casque.style.display="none";
+              commun.style.display = "block";
+              Clavier.style.display = "block";
+          }
+          
+      }
+
+
+    </script>
+
+    <br><br><br><br><br><br><br><br>
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <a href="{{ path('esprit_game_hub_Affciher') }}"><h5>Tous Les Sujet</h5></a>
+
+    <div class="container">
+        <center>
+
+
+            <div class="blog-post">
+                <div class="text-cmt">
+
+
+                    {{ socialButtons() }}
+
+                    <h3>{{ forum.titre }}</h3>
+                    <a href="{{ path('esprit_game_hub_signal',{'id':forum.id}) }}"><i
+                                class="fa fa-cut ">Signaler </i></a>
+                    <input type="text" name="idsujet" value="{{ forum.id }}" hidden>
+                    <div class="bottom-right">
+                        <p>
+                            Ajouter le :{{ forum.date |date('d M ,Y') }}
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-cmt">
+                            {{ forum.contenu }}
+                        </div>
+                    </div>
+                    <h4>{{ forum.membreId.username }}</h4>
+
+
+                    {% for n in comm %}
+
+
+                        <input type="text" value="{{ n.contenu }}" disabled><br>
+                    {% endfor %}
+                    <form method="post" action="{{ path('esprit_game_hub_AjouterComm', {'id': forum.id}) }}">
+                        <div class="text-cmt">
+                            <textarea placeholder="Message" required="" name="con"></textarea>
+                        </div>
+                        <div class="text-cmt">
+                            <input type="submit" id="butt" class="subscribe" name="butt" value="Commenter">
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+        </center>
+    </div>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+{% endblock body %}

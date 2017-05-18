@@ -1,0 +1,75 @@
+<?php
+
+namespace Esprit\GameHubBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Accessoire
+ *
+ * @ORM\Table(name="accessoire")
+ * @ORM\Entity
+ */
+class Accessoire
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix", type="integer", nullable=false)
+     */
+    private $prix;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_sortie", type="date", nullable=false)
+     */
+    private $dateSortie;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="evaluation", type="integer", nullable=false)
+     */
+    private $evaluation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plateforme", type="string", length=8, nullable=false)
+     */
+    private $plateforme;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=10, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="caraceristique", type="string", length=30, nullable=false)
+     */
+    private $caraceristique;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

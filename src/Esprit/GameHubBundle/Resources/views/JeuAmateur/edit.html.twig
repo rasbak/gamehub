@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+        {% block bgbody %}
+            body{
+            background-image: url({{ asset("images/zoro.png") }});
+
+            padding-top: 50px;
+            }
+        {% endblock %}
+{% block body %}
+    <br><br><br><br>
+
+
+
+
+
+    <div class="container">
+        <div class="modal fade" id="effacerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h4 class="modal-title">Effacer ce client ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div align="middle">
+                            {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
+                            {{ form_errors(delete_form) }}
+                            <button class="btn btn-default" data-dismiss="modal">Annuler</button>
+                            <button type="Effacer" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Effacer</button>
+                            {{ form_end(delete_form) }}
+                            <span id="loadereffacdem{{jeuAmateur.id}}" style="display: none;"><img src="{{ asset('images/loader.gif') }}" alt="loading" /></span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <h1 style="color: #00a65a">Modifier {{ jeuAmateur.nom}}</h1>
+        <div class="well" style="filter:alpha(opacity=50); opacity:0.8;">
+            {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_errors(edit_form) }}
+            <div class="form-group">
+                {{ form_label(edit_form.nom, "Nom : ", {'label_attr': {'class': 'col-sm-3  control-label'}}) }}
+
+                {{ form_errors(edit_form.nom) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(edit_form.nom, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.categorie, "Categorie : ", {'label_attr': {'class': 'col-sm-3  control-label'}}) }}
+
+                {{ form_errors(edit_form.categorie) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(edit_form.categorie, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.description, "Description : ", {'label_attr': {'class': 'col-sm-3  control-label'}}) }}
+
+                {{ form_errors(edit_form.description) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(edit_form.description, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.lien, "Lien : ", {'label_attr': {'class': 'col-sm-3  control-label'}}) }}
+
+                {{ form_errors(edit_form.lien) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(edit_form.lien, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group" align="middle">
+                <input type="reset" value="Annuler" class="btn btn-default">
+                <input type="submit" value="Modifier" class="btn btn-default">
+            </div>
+            {{ form_rest(edit_form) }}
+
+            {# Fermeture de la balise <form> du formulaire HTML #}
+            {{ form_end(edit_form) }}
+        </div>
+        <div align="middle">
+
+
+
+
+
+
+            <a href="{{ path('jeuamateur_index') }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour à la liste
+            </a>
+
+            <a href="#" data-toggle="modal" data-target="#effacerModal" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span> Effacer
+            </a>
+            {#{{ form(delete_form) }}#}
+        </div>
+
+    </div>
+    <br><br>
+{% endblock %}

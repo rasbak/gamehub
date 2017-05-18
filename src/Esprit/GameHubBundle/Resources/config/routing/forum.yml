@@ -1,0 +1,31 @@
+
+esprit_game_hub_Affciher:
+    path:     /afficher
+    defaults: { _controller: EspritGameHubBundle:SujetForum:afficher }
+esprit_game_hub_Sujet:
+    path:     /Sujet/{id}
+    defaults: { _controller: EspritGameHubBundle:SujetForum:Sujet }
+esprit_game_hub_Ajouter:
+    path:     /ajouter
+    defaults: { _controller: EspritGameHubBundle:SujetForum:AjouterSujet }
+esprit_game_hub_AjouterComm:
+    path:     /ajoutercomm/{id}
+    defaults: { _controller: EspritGameHubBundle:SujetForum:AjouterCommentaire }
+esprit_game_hub_Affciherb:
+    path:     admin/afficherb
+    defaults: { _controller: EspritGameHubBundle:SujetForum:afficherb }
+esprit_game_hub_signal:
+    path:     /signaler/{id}
+    defaults: { _controller: EspritGameHubBundle:SujetForum:signalesujet }
+esprit_game_hub_signaler:
+    path:     admin/signal/{id}
+    defaults: { _controller: EspritGameHubBundle:SujetForum:ajouterSignle }
+esprit_game_hub_AfficherSignale:
+    path:     admin/signal
+    defaults: { _controller: EspritGameHubBundle:SujetForum:afficherSignleb }
+esprit_game_hub_Accepter:
+    path:     admin/signal/accepter/{id}
+    defaults: { _controller: EspritGameHubBundle:SujetForum:AccepterSignle }
+esprit_game_hub_Refuser:
+    path:     admin/signal/refuser/{id}
+    defaults: { _controller: EspritGameHubBundle:SujetForum:RefuserSignle }

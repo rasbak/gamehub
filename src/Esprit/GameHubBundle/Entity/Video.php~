@@ -1,0 +1,47 @@
+<?php
+
+namespace Esprit\GameHubBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Video
+ *
+ * @ORM\Table(name="video")
+ * @ORM\Entity
+ */
+class Video
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=100, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="URL", type="string", length=200, nullable=false)
+     */
+    private $url;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

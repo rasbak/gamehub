@@ -1,0 +1,150 @@
+/* Injected CSS Code */
+/*PREFERENCES STYLE*/
+.form-label.form-label-auto {
+
+    display: inline-block;
+    float: left;
+    text-align: left;
+
+}
+
+.form-line {
+    margin-top: 12px 36px 12px 36px px;
+    margin-bottom: 12px 36px 12px 36px px;
+}
+
+.form-all {
+    width: 550px;
+}
+
+.form-label-left,
+.form-label-right {
+    width: 150px
+}
+
+.form-all {
+    font-family: Libre Baskerville, sans-serif;
+}
+.form-all .qq-upload-button,
+.form-all .form-submit-button,
+.form-all .form-submit-reset,
+.form-all .form-submit-print {
+    font-family: Libre Baskerville, sans-serif;
+}
+.form-all .form-pagebreak-back-container,
+.form-all .form-pagebreak-next-container {
+    font-family: Libre Baskerville, sans-serif;
+}
+.form-header-group {
+    font-family: Libre Baskerville, sans-serif;
+}
+.form-label {
+    font-family: Libre Baskerville, sans-serif;
+}
+
+.form-all {
+    font-size: 16px
+}
+.form-all .qq-upload-button,
+.form-all .qq-upload-button,
+.form-all .form-submit-button,
+.form-all .form-submit-reset,
+.form-all .form-submit-print {
+    font-size: 16px
+}
+.form-all .form-pagebreak-back-container,
+.form-all .form-pagebreak-next-container {
+    font-size: 16px
+}
+
+.supernova .form-all, .form-all {
+    background-color: rgba(4, 19, 13, 0.79);
+    border: 1px solid transparent;
+}
+
+.form-all {
+    color: rgb(255, 255, 255);
+}
+.form-header-group .form-header {
+    color: rgb(255, 255, 255);
+}
+.form-header-group .form-subHeader {
+    color: rgb(255, 255, 255);
+}
+.form-label-top,
+.form-label-left,
+.form-label-right,
+.form-html,
+.form-checkbox-item label,
+.form-radio-item label {
+    color: rgb(255, 255, 255);
+}
+
+.supernova {
+    background-color: rgb(195, 195, 195);
+}
+.supernova body {
+    background: transparent;
+}
+
+.form-textbox,
+.form-textarea,
+.form-radio-other-input,
+.form-checkbox-other-input,
+.form-captcha input,
+.form-spinner input {
+    background-color: rgba(255, 255, 255, 0.31);
+}
+
+.supernova {
+    height: 100%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: center top;
+}
+.supernova {
+    background-image: url("../../images/backgroundLogin.jpg");
+}
+#stage {
+    background-image: url("../../images/backgroundLogin.jpg");
+}
+
+.form-all {
+    background-image: none;
+}
+
+.arrondi {
+    background:url("../../images/play.png");
+    border:none;
+    width: 140px; /* largeur à spécifier */
+    height: 70px; /* longueur à spécifier */
+    cursor: pointer;
+}
+.arrondi2 {
+    background:url("../../images/play.png");
+    border:none;
+    width: 70px; /* largeur à spécifier */
+    height: 140px; /* longueur à spécifier */
+    cursor: pointer;
+}
+.size-logo {
+
+    border:none;
+    width: 200px; /* largeur à spécifier */
+    height: 30px; /* longueur à spécifier */
+    cursor: pointer;
+}
+
+*:focus {
+
+    outline: none;
+
+}
+
+*::-moz-focus-inner {
+
+    border: none;
+
+}
+/*PREFERENCES STYLE*//*__INSPECT_SEPERATOR__*/
+/* Injected CSS Code */

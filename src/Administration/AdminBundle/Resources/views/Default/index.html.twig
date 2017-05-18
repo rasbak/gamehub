@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta content='True' name='HandheldFriendly' />
+    <meta content='user-scalable=0,initial-scale=1' name='viewport' />
+    <title>{% block title %}OurCrm{% endblock %}</title>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/jquery.datetimepicker.css')}}" />
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <style>
+
+        .margin-bottom-demande {
+            margin-bottom:4px;
+        }
+        .form-control-court{
+            height: 30px
+        }
+        .modal-backdrop.in {
+            opacity: 0.82 !important ;
+        }
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+
+        .dropdown-submenu:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu>a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+
+        .dropdown-submenu:hover>a:after {
+            border-left-color: #fff;
+        }
+
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+
+        .dropdown-submenu.pull-left>.dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+        .imageTourne{
+            padding-top: 3px;
+        }
+        body{
+            padding-top: 56px;
+        }
+        [data-notifications] {
+            position: relative;
+        }
+
+        [data-notifications]:after {
+            content: attr(data-notifications);
+            position: absolute;
+            background: red;
+            border-radius: 20%;
+            display: inline-block;
+            padding: 0.2em;
+            color: #f2f2f2;
+            right: 4px;
+            top: 5px;
+            bottom: 25px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="{{ path('accueil_homepage')}}"><div style="font-size:32px ; color : white;">OurCRM</div></a>
+
+
+        </div>
+        <div class="navbar-nav">
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Recherche...">
+                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                </div>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <!--<li><a href="#" data-toggle="modal" data-target="#myModal"><div style="font-size:23px ; color:white;">+</div></a></li>-->
+
+                {% block homeactif %} <li><a href="{{ path('accueil_homepage') }}"><div style="font-size:12px ; color : white;"><span class="glyphicon glyphicon-home"></span> </div></a></li>{% endblock%}
+                <li class="dropdown" >
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"  id="notification" onclick="effaceNotif();"><div style="font-size:15px ; color : white;"><span class="glyphicon glyphicon-globe"></span></div></a>
+                    <!--  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notifications <span class="badge">3</span></a>-->
+                    <ul class="dropdown-menu" id="dropdown-menu-notification">
+                        <li id="aucuneNotification"> &nbsp;&nbsp; Aucune notification</li>
+                        <!-- contenu des notification -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <div style="font-size:12px ; color : white;"><span class="glyphicon glyphicon-chevron-down"></span> </div>
+                    </a>
+                    <ul class="dropdown-menu multi-level">
+                        <li><a href="{{ path('demandes') }}"><span class="glyphicon glyphicon-file"></span> Demandes </a></li>
+                        <li><a href="{{ path('fos_user_profile_show')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendrier</a></li>
+                        <li><a href="{{ path('fichier_ajout')}}"><span class="glyphicon glyphicon-barcode"></span> Stock </a></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#"><span class="glyphicon glyphicon-cog"></span> Paramètres  </a>
+                            <ul class="dropdown-menu">
+                                {% if is_granted('ROLE_ADMIN') %}<li><a tabindex="-1" href="{{ path('missions')}}"><span class="glyphicon glyphicon-wrench"></span> Missions</a></li>{% endif %}
+                                <li><a tabindex="-1" href="{{ path('clients')}}"><span class="glyphicon glyphicon-wrench"></span> Clients</a></li>
+                                <li><a tabindex="-1" href="{{ path('sites')}}"><span class="glyphicon glyphicon-wrench"></span> Sites</a></li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a tabindex="-1" href="{{ path('categories')}}"><span class="glyphicon glyphicon-wrench"></span> Catégories</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="divider"></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{{path('sonata_admin_redirect')}}" target="_blank"><span class="glyphicon glyphicon-list-alt"></span> Administration</a>
+                            </li>
+                        {% endif %}
+                        <li class="divider"></li>
+                        <li><a href="{{ path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-off"></span> Déconnexion  </a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>{% block modalplus %} {% endblock%}</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block body %}
+
+{% endblock %}
+<hr/>
+<footer id="footer" class="vspace20">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-lg-4">
+                <p>&copy; Copyright {{"now"|date('Y')       }}</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{#<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>#}
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/jquery.datetimepicker.js') }}"></script>
+{% block javascripts %}
+    <script type="text/javascript">
+        // $('.dropdown-submenu > a').submenupicker();
+        // when .modal-wide opened, set content-body height based on browser height; 200 is appx height of modal padding, modal title and button bar
+        jQuery('#gestion_gestionbundle_Demandes_dateLimite').datetimepicker();
+        jQuery('#gestion_gestionbundle_Demandes_envoiePrevuLe').datetimepicker();
+        function centerModals() {
+            $('.modalMid').each(function (i) {
+                var $clone = $(this).clone().css('display', 'block').appendTo('body');
+                var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+                top = top > 0 ? top : 0;
+                $clone.remove();
+                $(this).find('.modal-content').css("margin-top", top);
+
+            });
+        }
+
+        $(".modal").on("show.bs.modal", function () {
+            centerModals();
+            //var height = $(window).height() - 200;
+            //$(this).find(".modal-body").css("max-height", height);
+        });
+
+        setInterval(notifier, 3000);
+
+        var notificationTab = new Array();
+
+        function notifier() {
+
+            $.ajax({
+                type: 'post',
+                url: '{{ path('notifications') }}',
+                datatype: 'json',
+                beforeSend: function () {
+
+                    // console.log('debut notif');
+                },
+                success: function (data) {
+                    //var obj = JSON.parse(data);
+
+
+                    if (data.nombreNotif > '0') {
+                        // playSound('laser');
+                        //playSound('laser');
+                        //playSound('laser');
+                        console.log('fama notif : ' + data.nombreNotif);
+                        $('#aucuneNotification').replaceWith('<li id="aucuneNotification"></li>')
+                        /*chaque notification n3adi 3leha fonction*/
+                        $.each(data.notifications, function () {
+                            var notif = JSON.parse(this);
+                            if(nexistepas(notif.id,notificationTab)){
+                                notificationTab.push(notif.id);
+                                //console.log("tablou"+notificationTab);
+                                $('#dropdown-menu-notification').append('<li role="presentation"><a role="menuitem" tabindex="-1" href="' + Routing.generate('demandes_show_comments_notif', { 'id': notif.publication.id,'idnotif' : notif.id }) +  '" target="_blank"><i class="glyphicon glyphicon-file"></i>' + notif.contenu + '</a></li>');
+
+                            }
+
+                        });
+                        $("#notification").attr("data-notifications", data.nombreNotif);
+                    } else {
+                        //console.log('no notif');
+                        if(document.getElementById('aucuneNotification').value != 0){
+                            $('#aucuneNotification').replaceWith('<li id="aucuneNotification" value="0"> &nbsp;&nbsp; Aucune notification</li>')
+                        }
+                    }
+                    // console.log('fin notif');
+                }
+            });
+
+        }
+
+        function nexistepas(notificationActuel, notificationTableau){
+            for(  i = 0 ; i < notificationTableau.length; i++){
+                if(notificationActuel == notificationTableau[i]) {
+                    //console.log('notif mawjouda deja ' + notificationTableau[i]);
+                    return false;
+                }
+            }
+            // console.log('notif mouch mawjouda '+notificationActuel );
+            // console.log('haw tableau' +notificationTableau);
+            return true ;
+
+        }
+
+
+        function effaceNotif() {
+            $("#notification").removeAttr("data-notifications");
+        }
+
+
+        function aimerscript(demandeid, siaimer, pasaimer) {
+
+            $.ajax({
+                type: 'post',
+                url: Routing.generate('aimer', { 'id': demandeid }),
+                beforeSend: function () {
+                    document.getElementById("loader" + demandeid).style.display = "inline";
+                    console.log('ça chargee aimer');
+                },
+                success: function (data) {
+                    siaimer.innerHTML = data.demandeJaime;
+                    pasaimer.innerHTML = data.demandeJaimepas;
+                    document.getElementById("loader" + demandeid).style.display = "none";
+                    console.log("okkk ne pas aimer : " + data.demandeJaimepas + " et aimer : " + data.demandeJaime);
+                }
+            });
+        }
+
+
+        function neaimerscript(demandeid, pasaimer, siaimer) {
+            $.ajax({
+                type: 'post',
+                url: Routing.generate('ne_pas_aimer', { 'id': demandeid }),
+                beforeSend: function () {
+                    document.getElementById("loader" + demandeid).style.display = "inline";
+                    console.log('ça chargee ne pas aimer');
+                },
+                success: function (data) {
+                    pasaimer.innerHTML = data.demandeJaimepas;
+                    siaimer.innerHTML = data.demandeJaime;
+                    document.getElementById("loader" + demandeid).style.display = "none";
+                    console.log("okkk ne pas aimer : " + data.demandeJaimepas + " et aimer : " + data.demandeJaime);
+                }
+            });
+        }
+
+        function modifetat(demandeid, etat, champ) {
+            $.ajax({
+                type: 'post',
+                url: Routing.generate('modifetat', { 'id': demandeid,'etat' : etat }),
+                beforeSend: function () {
+                    document.getElementById("loaderetat" + demandeid).style.display = "inline";
+                    console.log('ça chargee changement de etat');
+                },
+                success: function (data) {
+
+                    champ.innerHTML = data.etat;
+                    if (data.etat === 'Emise') {
+                        $('#progresscouleur' + demandeid).attr("class", "progress-bar progress-bar-warning");
+                        $('#progresscouleur' + demandeid).attr("style", "width: 100%");
+                        $('#progressmot' + demandeid).remove();
+                        $('#progresscouleur' + demandeid).append('<span class="sr-only-focusable" id="progressmot' + demandeid + '">Emise</span>');
+                    } else if (data.etat === 'En cour') {
+                        $('#progresscouleur' + demandeid).attr("class", "progress-bar progress-bar-success");
+                        $('#progresscouleur' + demandeid).attr("style", "width: 60%");
+                        $('#progressmot' + demandeid).remove();
+                        $('#progresscouleur' + demandeid).append('<span class="sr-only-focusable" id="progressmot' + demandeid + '">En cour</span>');
+                    } else if (data.etat === 'Annulée') {
+                        $('#progresscouleur' + demandeid).attr("class", "progress-bar progress-bar-danger");
+                        $('#progresscouleur' + demandeid).attr("style", "width: 100%");
+                        $('#progressmot' + demandeid).remove();
+                        $('#progresscouleur' + demandeid).append('<span class="sr-only-focusable" id="progressmot' + demandeid + '">Annulée</span>');
+                    } else {
+                        $('#progresscouleur' + demandeid).attr("class", "progress-bar progress-bar-info");
+                        $('#progresscouleur' + demandeid).attr("style", "width: 100%");
+                        $('#progressmot' + demandeid).remove();
+                        $('#progresscouleur' + demandeid).append('<span class="sr-only-focusable" id="progressmot' + demandeid + '">Livée</span>');
+                    }
+                    document.getElementById("loaderetat" + demandeid).style.display = "none";
+                    console.log('etat changé');
+                }
+            });
+        }
+
+
+        function commenterscript(id, contenu) {
+            var lecommentaire = contenu.value;
+
+            while (lecommentaire.indexOf('\\') !== -1) {
+                lecommentaire = lecommentaire.replace('\\', 'antislach');
+            }
+            while (lecommentaire.indexOf('/') !== -1) {
+                lecommentaire = lecommentaire.replace('/', 'slach');
+            }
+            while (lecommentaire.indexOf('?') !== -1) {
+                lecommentaire = lecommentaire.replace('?', 'istefhem');
+            }
+
+            $.ajax({
+                type: 'post',
+                url: Routing.generate('commentersansfichier', { 'id': id,'contenu' : lecommentaire }),
+                beforeSend: function () {
+                    document.getElementById("loaderCom" + id).style.display = "inline";
+                    console.log('ça chargee encore commentaire ' + id + '/' + contenu.value);
+                    console.log('ça chargee commentaire ' + id + '/' + lecommentaire );
+
+
+                },
+                success: function (data) {
+                    document.getElementById("loaderCom" + id).style.display = "none";
+                    $('#commentaires' + id).append('<li class="list-group-item"><div class="row"><div class="col-md-1"><img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10006936_10203866037277053_1105347978090786590_n.jpg?oh=079bb22e6ba5fa45f84a76a0ab6b35cd&oe=5621DCDC&__gda__=1444979385_e2a3d3d7ee03394952295dbb0b95d4d1" height="45" width="45"></div><div class="col-md-11"> <div style="font-size:14.2px ; line-height:1.3 "><strong>{{ app.security.getToken().getUser() }}.</strong> ' + contenu.value + '</div><br/> <div align="right"> {{'now'|date }} </div></div> </div></li>');
+
+                    contenu.value = ' ';
+                    console.log("okkk commentaire");
+                }
+            });
+        }
+
+        function effacerDemande(id) {
+            $.ajax({
+                type: 'post',
+                url: Routing.generate('demandes_effacer_accueil', { 'id': id}),
+                beforeSend: function () {
+                    document.getElementById("loadereffacdem" + id).style.display = "inline";
+                    console.log('ça chargee effacement demande ' + id);
+                },
+                success: function (data) {
+                    document.getElementById("loadereffacdem" + id).style.display = "none";
+                    console.log("demande " + data.etat);
+                }
+            });
+        }
+        function exporterDemande(demande){
+            window.location.href = Routing.generate('exporterDemande', { 'id': demande});
+        }
+
+
+
+    </script>
+
+{% endblock %}
+</body>
+</html>

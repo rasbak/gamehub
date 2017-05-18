@@ -1,0 +1,54 @@
+<?php
+
+namespace Esprit\GameHubBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tournoi
+ *
+ * @ORM\Table(name="tournoi")
+ * @ORM\Entity
+ */
+class Tournoi
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nom", type="integer", nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jeux", type="string", length=30, nullable=false)
+     */
+    private $jeux;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nombe_participant", type="integer", nullable=false)
+     */
+    private $nombeParticipant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="string", length=20, nullable=false)
+     */
+    private $lieu;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

@@ -1,0 +1,342 @@
+{% extends 'base.html.twig' %}
+ {% block bgbody %}
+     body{
+     background-image: url({{ asset("images/luffy.jpg") }});
+
+     padding-top: 50px;
+     }
+ {% endblock %}
+
+
+{% block body %}
+
+    <h1>Accessoire à modifier : {{ accessoire.nomProduit }}</h1>
+    <div class="well" style="filter:alpha(opacity=50); opacity:0.8;">
+        {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(edit_form) }}
+
+        <div class="form-group">
+            {{ form_label(edit_form.nomProduit, "Nom : ", {'label_attr': {'class': 'col-sm-3  control-label'}}) }}
+
+            {{ form_errors(edit_form.nomProduit) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(edit_form.nomProduit, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.prixProduit, "prixProduit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {{ form_errors(edit_form.prixProduit) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(edit_form.prixProduit, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.longueur, "Image du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {{ form_errors(edit_form.longueur) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(edit_form.longueur, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            {{ accessoire.typeProduit }}
+            <div class="col-sm-3 control-label ">
+                Type :
+
+            </div>
+        </div>
+
+
+        {% if accessoire.typeProduit =="Pc" %}
+            <div id="PC">
+                <div class="form-group">
+                    {{ form_label(edit_form.processeurP, "processeurP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.processeurP) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.processeurP, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.disqueDurP, "disqueDurP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.disqueDurP) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.disqueDurP, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.memoireP, "memoireP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.memoireP) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.memoireP, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.carteGraphiqueP, "carteGraphiqueP : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.carteGraphiqueP) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.carteGraphiqueP, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hidden">
+                {{ form_widget(edit_form.nomClavier, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.longueurCable, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.poids, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomSouris, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.typeCasque, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomCasque, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.systemAcoustique, { 'attr': {'class': 'hidden-row'} }) }}
+            </div>
+
+        {% endif %}
+
+
+        {% if accessoire.typeProduit =="Clavier" %}
+            <div id="Clavier">
+
+                <div class="form-group">
+                    {{ form_label(edit_form.nomClavier, "nomClavier : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.nomClavier) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.nomClavier, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.longueurCable, "longueurCable : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.longueurCable) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.longueurCable, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.poids, "poids : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.poids) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.poids, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="hidden">
+                {{ form_widget(edit_form.processeurP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.disqueDurP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.memoireP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.carteGraphiqueP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomSouris, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.typeCasque, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomCasque, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.systemAcoustique, { 'attr': {'class': 'hidden-row'} }) }}
+            </div>
+        {% endif %}
+        {% if accessoire.typeProduit =="Souris" %}
+            <div id="Souris">
+
+                <div class="form-group">
+                    {{ form_label(edit_form.nomSouris, "nomSouris : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.nomSouris) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.nomSouris, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.longueurCable, "longueurCable : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.longueurCable) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.longueurCable, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.poids, "poids : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.poids) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.poids, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hidden">
+                {{ form_widget(edit_form.processeurP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.disqueDurP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.memoireP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.carteGraphiqueP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.typeCasque, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomCasque, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.systemAcoustique, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomClavier, { 'attr': {'class': 'hidden-row'} }) }}
+            </div>
+        {% endif %}
+        {% if accessoire.typeProduit =="Casque" %}
+            <div id="Casque">
+
+                <div class="form-group">
+                    {{ form_label(edit_form.typeCasque, "typeCasque : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.typeCasque) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.typeCasque, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.nomCasque, "nomCasque : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.nomCasque) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.nomCasque, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.systemAcoustique, "systemAcoustique : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                    {{ form_errors(edit_form.systemAcoustique) }}
+
+                    <div class="col-sm-4">
+                        {{ form_widget(edit_form.systemAcoustique, {'attr': {'class': 'form-control'}}) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hidden">
+                {{ form_widget(edit_form.processeurP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.disqueDurP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.memoireP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.carteGraphiqueP, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.longueurCable, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomSouris, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.poids, { 'attr': {'class': 'hidden-row'} }) }}
+                {{ form_widget(edit_form.nomClavier, { 'attr': {'class': 'hidden-row'} }) }}
+            </div>
+        {% endif %}
+
+        <div class="form-group" align="middle">
+            <input type="reset" value="Annuler" class="btn btn-default">
+            <input type="submit" value="Modifier" class="btn btn-default">
+        </div>
+        {{ form_rest(edit_form) }}
+
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(edit_form) }}
+    </div>
+
+
+    <div align="middle">
+
+        <a href="{{ path('accessoire_index') }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour à la liste
+        </a>
+
+        <a href="#" data-toggle="modal" data-target="#effacerModal" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash"></span> Effacer
+        </a>
+        {#{{ form(delete_form) }}#}
+    </div>
+
+
+
+    {#
+
+        <script type="text/javascript">
+
+
+            function selectionner() {
+                var pc = document.getElementById("PC");
+                var souris = document.getElementById("Souris");
+                var Casque = document.getElementById("Casque");
+                var Clavier = document.getElementById("Clavier");
+                var commun = document.getElementById("commun");
+
+                var cb = document.getElementById("esprit_gamehubbundle_accessoire_typeProduit");
+
+                if (cb.value=="Pc") {
+                    pc.style.display = "block";
+                    souris.style.display="none";
+                    Casque.style.display="none";
+                    commun.style.display = "none";
+                    Clavier.style.display="none"
+                }
+                if (cb.value=="Souris") {
+                    pc.style.display = "none";
+                    souris.style.display = "block";
+                    commun.style.display = "block";
+                    Casque.style.display = "none";
+                    Clavier.style.display = "none"
+                }
+                if (cb.value=="Casque") {
+                    pc.style.display = "none";
+                    souris.style.display = "none";
+                    Casque.style.display = "block";
+                    commun.style.display = "none";
+                    Clavier.style.display = "none"
+                }
+                if (cb.value=="Clavier") {
+                    pc.style.display = "none";
+                    souris.style.display="none";
+                    Casque.style.display="none";
+                    commun.style.display = "block";
+                    Clavier.style.display = "block";
+                }
+
+            }
+
+
+        </script>
+    #}
+
+    <br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div id="contact" class="container">
+
+        <div class="row">
+            <h3 class="text-center">Voulez Vous Vraiment S'Inscrire ?</h3>
+            <div class="col-md-12 form-group">
+                <a href="{{ path('esprit_gamehub_tournoi') }}">
+                    <span class="btn pull-right">Annuler</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-10">
+
+            <div class="row form-inline">
+                {{ form_start(edit_form) }}
+
+                <div class="col-sm-6 form-group">
+                    <!--  champ nomMembre -->
+                    {{ form_errors(edit_form.nomMembre) }}
+                    {{ form_label(edit_form.nomMembre) }}
+                    {{ form_widget(edit_form.nomMembre) }}
+                </div>
+
+                <div class="col-sm-6 form-group">
+                    <!--  champ nomTournoi -->
+                    {{ form_errors(edit_form.nomTournoi) }}
+                    {{ form_label(edit_form.nomTournoi) }}
+                    {{ form_widget(edit_form.nomTournoi) }}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+            <button class="btn pull-right" type="submit">Inscription</button>
+        </div>
+        {{ form_end(edit_form) }}
+    </div>
+    <div style="width: 100% ; height: 300px">
+        <iframe  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12762.890238311616!2d10.186470479992678!3d36.89698489759963!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x683b3ab5565cd357!2sEsprit+Pr%C3%A9pa!5e0!3m2!1sfr!2stn!4v1491969881153" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+    </div>
+
+{% endblock %}
+

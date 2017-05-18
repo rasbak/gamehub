@@ -1,0 +1,7 @@
+administration_admin_homepage:
+    path:     /
+    defaults: { _controller: AdministrationAdminBundle:Default:index }
+
+administration_admin_ja_index:
+    path:     /ja
+    defaults: { _controller: AdministrationAdminBundle:AdminJA:index }

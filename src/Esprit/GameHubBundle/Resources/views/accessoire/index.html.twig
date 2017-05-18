@@ -1,0 +1,277 @@
+{% extends 'base.html.twig' %}
+ {#{% block stylesheets %}
+     <LINK rel="stylesheet" href="{{ asset("css/jeuamateur/style.css") }}" type="text/css">
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+     <link rel="alternate" type="application/json+oembed"
+           href="{{ asset("https://www.jotform.com/oembed/?format=json&amp;url=http%3A%2F%2Fwww.jotform.com%2Fform%2F70702483949565") }}"
+           title="oEmbed Form">
+     <link rel="alternate" type="text/xml+oembed"
+           href="https://www.jotform.com/oembed/?format=xml&amp;url=http%3A%2F%2Fwww.jotform.com%2Fform%2F70702483949565"
+           title="oEmbed Form">
+     <meta property="og:title" content="Professional Development Workshop Registration Form">
+     <meta property="og:url" content="{{ asset("http://www.myjotform.com/form/70702483949565") }}">
+     <meta property="og:description" content="Please click the link to complete this form.">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+     <meta name="HandheldFriendly" content="true"/>
+     <title>Professional Development Workshop Registration Form</title>
+     <link href="{{ asset("https://cdn.jotfor.ms/static/formCss.css?3.3.17784") }}" rel="stylesheet" type="text/css"/>
+     <link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.jotfor.ms/css/styles/nova.css?3.3.17784") }}"/>
+     <link type="text/css" media="print" rel="stylesheet"
+           href="{{ asset("https://cdn.jotfor.ms/css/printForm.css?3.3.17784") }}"/>
+     <link type="text/css" rel="stylesheet"
+           href="{{ asset("https://cdn.jotfor.ms/themes/CSS/551913e0977cdf067e8b4567.css?themeRevisionID=57debcc69a11c71ebe8b4567") }}"/>
+ {% endblock %}
+ #}       {% block bgbody %}
+            body{
+            background-image: url({{ asset("images/backgroundRegister2.png") }});
+
+            padding-top: 50px;
+            }
+        {% endblock %}
+{% block body %}
+    <h1>Accessoires list</h1>
+
+    <table id="Table1" class="table table-bordered table-hover">
+
+        <thead>
+        <tr>
+            <th class="hidden-480">Image</th>
+            <th class="hidden-480">nomProduit</th>
+            <th class="hidden-480">prixProduit</th>
+            <th class="hidden-480">dateSortie</th>
+            <th class="hidden-480">Typeproduit</th>
+
+            <th class="hidden-480">Processeurp</th>
+            <th class="hidden-480">Disquedurp</th>
+            <th class="hidden-480">Memoirep</th>
+            <th class="hidden-480">Cartegraphiquep</th>
+
+            <th class="hidden-480">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for accessoire in accessoires %}
+            {% if accessoire.typeProduit =="Pc" %}
+                <tr>
+
+                    <td><img src="{{ (asset ('tsawer/')~ accessoire.longueur) }}" alt="img"
+                             style="width: 50px; height: 50px;"></td>
+
+                    <td> {{ accessoire.nomProduit }}    </td>
+
+                    <td> {{ accessoire.prixProduit }}     </td>
+
+                    <td> {% if accessoire.dateSortie %}{{ accessoire.dateSortie|date('Y-m-d') }}{% endif %} </td>
+
+                    <td id="Type"> {{ accessoire.typeProduit }} </td>
+
+                    <td id="Proc"> {{ accessoire.processeurP }} </td>
+
+                    <td id="Dis"> {{ accessoire.disqueDurP }} </td>
+
+                    <td id="Mem"> {{ accessoire.memoireP }} </td>
+
+                    <td id="Cart"> {{ accessoire.carteGraphiqueP }} </td>
+
+                    <td>
+                        <a href="{{ path('accessoire_show', { 'id': accessoire.id }) }}"><img
+                                    src="{{ asset('images/show.png') }}" style="width: 20px; height: 20px;"></a>
+                        <a href="{{ path('accessoire_edit', { 'id': accessoire.id }) }}"> <img
+                                    src="{{ asset('images/edit.png') }}" style="width: 20px; height: 20px;"></a>
+                    </td>
+
+                </tr>
+
+            {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <table id="table2" class="table table-bordered table-hover">
+
+        <thead>
+        <tr>
+            <th class="hidden-480">Image</th>
+            <th class="hidden-480">nomProduit</th>
+            <th class="hidden-480">prixProduit</th>
+            <th class="hidden-480">dateSortie</th>
+            <th class="hidden-480">evaluation</th>
+            <th class="hidden-480">Typeproduit</th>
+
+            <th class="hidden-480">Poids</th>
+            <th class="hidden-480">Longueurcable</th>
+            <th class="hidden-480">Nomsouris</th>
+
+
+            <th class="hidden-480">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for accessoire in accessoires %}
+
+            {% if accessoire.typeProduit =="Souris" %}
+
+                <tr>
+
+                    <td><img src="{{ (asset ('tsawer/')~ accessoire.longueur) }}" alt="img"
+                             style="width: 50px; height: 50px;"></td>
+
+                    <td> {{ accessoire.nomProduit }}    </td>
+
+                    <td> {{ accessoire.prixProduit }}     </td>
+
+                    <td> {% if accessoire.dateSortie %}{{ accessoire.dateSortie|date('Y-m-d') }}{% endif %} </td>
+
+                    <td> {{ accessoire.evaluation }}  </td>
+
+                    <td id="Type"> {{ accessoire.typeProduit }} </td>
+
+                    <td id="Poid"> {{ accessoire.poids }}  </td>
+
+                    <td id="Long"> {{ accessoire.longueurCable }} </td>
+
+                    <td id="Souris"> {{ accessoire.nomSouris }} </td>
+
+                    <td>
+                        <a href="{{ path('accessoire_show', { 'id': accessoire.id }) }}"><img
+                                    src="{{ asset('images/show.png') }}" style="width: 20px; height: 20px;"></a>
+                        <a href="{{ path('accessoire_edit', { 'id': accessoire.id }) }}"> <img
+                                    src="{{ asset('images/edit.png') }}" style="width: 20px; height: 20px;"></a>
+                    </td>
+
+                </tr>
+
+            {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <table id="table3" class="table table-bordered table-hover">
+
+        <thead>
+        <tr>
+            <th class="hidden-480">Image</th>
+            <th class="hidden-480">nomProduit</th>
+            <th class="hidden-480">prixProduit</th>
+            <th class="hidden-480">dateSortie</th>
+            <th class="hidden-480">evaluation</th>
+            <th class="hidden-480">Typeproduit</th>
+
+            <th class="hidden-480">Poids</th>
+            <th class="hidden-480">Longueurcable</th>
+            <th class="hidden-480">Nomclavier</th>
+
+            <th class="hidden-480">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for accessoire in accessoires %}
+
+            {% if accessoire.typeProduit =="Clavier" %}
+
+                <tr>
+
+                    <td><img src="{{ (asset ('tsawer/')~ accessoire.longueur) }}" alt="img"
+                             style="width: 50px; height: 50px;"></td>
+
+                    <td> {{ accessoire.nomProduit }}    </td>
+
+                    <td> {{ accessoire.prixProduit }}     </td>
+
+                    <td> {% if accessoire.dateSortie %}{{ accessoire.dateSortie|date('Y-m-d') }}{% endif %} </td>
+
+                    <td> {{ accessoire.evaluation }}  </td>
+
+                    <td id="Type"> {{ accessoire.typeProduit }} </td>
+
+                    <td id="Poid"> {{ accessoire.poids }}  </td>
+
+                    <td id="Long"> {{ accessoire.longueurCable }} </td>
+
+                    <td id="Clavier"> {{ accessoire.nomClavier }} </td>
+
+                    <td>
+                        <a href="{{ path('accessoire_show', { 'id': accessoire.id }) }}"><img
+                                    src="{{ asset('images/show.png') }}" style="width: 20px; height: 20px;"></a>
+                        <a href="{{ path('accessoire_edit', { 'id': accessoire.id }) }}"> <img
+                                    src="{{ asset('images/edit.png') }}" style="width: 20px; height: 20px;"></a>
+                    </td>
+
+                </tr>
+
+            {% endif %}
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <table id="table4" class="table table-bordered table-hover">
+
+        <thead>
+        <tr>
+            <th class="hidden-480">Image</th>
+            <th class="hidden-480">nomProduit</th>
+            <th class="hidden-480">prixProduit</th>
+            <th class="hidden-480">dateSortie</th>
+            <th class="hidden-480">evaluation</th>
+            <th class="hidden-480">Typeproduit</th>
+
+            <th class="hidden-480">Typecasque</th>
+            <th class="hidden-480">Systemacoustique</th>
+            <th class="hidden-480">Nomcasque</th>
+
+            <th class="hidden-480">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for accessoire in accessoires %}
+
+            {% if accessoire.typeProduit =="Casque" %}
+                <tr>
+
+                    <td><img src="{{ (asset ('tsawer/')~ accessoire.longueur) }}" alt="img"
+                             style="width: 50px; height: 50px;"></td>
+
+                    <td> {{ accessoire.nomProduit }}    </td>
+
+                    <td> {{ accessoire.prixProduit }}     </td>
+
+                    <td> {% if accessoire.dateSortie %}{{ accessoire.dateSortie|date('Y-m-d') }}{% endif %} </td>
+
+                    <td> {{ accessoire.evaluation }}  </td>
+
+                    <td id="Type"> {{ accessoire.typeProduit }} </td>
+
+                    <td id="TypeC"> {{ accessoire.typeCasque }} </td>
+
+                    <td id="Sys"> {{ accessoire.systemAcoustique }} </td>
+
+                    <td id="Casque"> {{ accessoire.nomCasque }} </td>
+                    <td>
+                        <a href="{{ path('accessoire_show', { 'id': accessoire.id }) }}"><img
+                                    src="{{ asset('images/show.png') }}" style="width: 20px; height: 20px;"></a>
+                        <a href="{{ path('accessoire_edit', { 'id': accessoire.id }) }}"> <img
+                                    src="{{ asset('images/edit.png') }}" style="width: 20px; height: 20px;"></a>
+                    </td>
+
+                </tr>
+
+            {% endif %}
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <div align="middle">
+        <a  data-toggle="modal"  class="btn btn-danger" href="{{ path('accessoire_new') }}">
+            <span class="glyphicon glyphicon-log-in"></span> Create a new accessoire</a>
+    </div>
+
+
+
+    <br><br><br><br><br><br><br><br>
+{% endblock %}

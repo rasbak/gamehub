@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <h3 class="text-center">Participants list</h3>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nommembre</th>
+                <th>Nomtournoi</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for participant in participants %}
+                <tr>
+                    <td>{{ participant.nomMembre }}</td>
+                    <td>{{ participant.nomTournoi }}</td>
+                    <td>
+                        <a href="{{ path('participant_edit', { 'id': participant.id }) }}">
+                            <span class="btn">Supprimer</span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

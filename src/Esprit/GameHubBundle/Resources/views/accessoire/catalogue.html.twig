@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+        {% block bgbody %}
+            body{
+            background-image: url({{ asset("images/backgroundRegister2.png") }});
+
+            padding-top: 50px;
+            }
+        {% endblock %}
+
+
+{% block body %}
+    <h1>Accessoire</h1>
+
+
+
+        <div  class="form-group">
+    {% for accessoire in accessoires %}
+
+        <div class="col-sm-4">
+
+            <div class="product-box" style="width: 150px;">
+
+                <div class="frame"> <img src="{{(asset('tsawer/')~ accessoire.longueur ) }}" style=" width: 150px;height: 150px; " alt="img">
+                    <div class="caption"> <a href="" class="link"><i class="fa fa-link" aria-hidden="true"></i></a> <a href="" class="link"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a> </div>
+                </div>
+                <div class="text-box">
+                    <h3><a>{{ accessoire.nomProduit }}</a></h3>
+                    <strong class="amount">{{ accessoire.prixProduit }}DT</strong>
+                    <a class="link" href="{{ path('accessoireDetails',{ 'ida': accessoire.id }) }}">Voir details</a>
+                </div>
+            </div>
+        </div>
+        </div>
+{% endfor %}
+    <div  align="center">
+    {{ knp_pagination_render(accessoires) }}
+    </div>
+
+    <br><br><br><br><br><br><br><br>
+{% endblock %}

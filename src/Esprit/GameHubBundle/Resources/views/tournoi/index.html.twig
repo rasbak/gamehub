@@ -1,0 +1,50 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}tournoi{% endblock %}
+{% block body %}
+
+    <div id="contact" class="bg-1">
+        <div class="container">
+
+            <div class="row">
+                <h3 class="text-center">Tournoi  <a href="{{ path('tournoi_new') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></h3>
+
+
+
+            </div>
+
+            {% for tournoi in tournois %}
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        <img src="{{ asset('uploads/images/') }}{{ tournoi.image }}" width="400" height="300">
+                        <div class="col-sm-12 col-lg-offset-2">
+
+                            <p><strong> Nom :</strong>{{ tournoi.nom }}</p>
+                            <p><strong>Jeu :</strong>{{ tournoi.jeu }}</p>
+                            <p><strong>Lieu :</strong>{{ tournoi.lieu }}</p>
+                            <p><strong>Date :</strong>
+                                {% if tournoi.dateTournoi %}
+                                    {{ tournoi.dateTournoi|date('Y-m-d') }}
+                                {% endif %}
+                            </p>
+                            </p>
+                        </div>
+
+                        <div class="btn-group col-sm-offset-2">
+                            <a href="{{ path('tournoi_show', { 'id': tournoi.id }) }}"><span class="btn">View </span></a>
+                            <a href="{{ path('tournoi_edit', { 'id': tournoi.id }) }}"><span class="btn">Modifier</span></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+

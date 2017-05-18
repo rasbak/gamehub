@@ -1,0 +1,228 @@
+{% extends 'base.html.twig' %}
+
+
+ {% block ssjeu %}
+     <link href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/filter.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/owl.carousel.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/hover.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/portfolio.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/components.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/cubeportfolio.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/cubeportfolio.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/fancybox/source/jquery.fancybox.css')}}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
+     <link href="{{ asset('assets/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
+     <!-- END THEME GLOBAL STYLES -->
+     <!-- BEGIN PAGE LEVEL STYLES -->
+     <link href="{{ asset('assets/apps/css/inbox.min.css') }}" rel="stylesheet" type="text/css" />
+     <!-- END PAGE LEVEL STYLES -->
+     <!-- BEGIN THEME LAYOUT STYLES -->
+     <link href="{{ asset('assets/layouts/layout4/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/layouts/layout4/css/themes/light.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
+     <link href="{{ asset('assets/layouts/layout4/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
+ {% endblock %}
+{% block stylesheet %}
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="{{ asset('assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{  asset('assets/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+{% endblock %}
+{% block level_p %}
+    <link href="{{ asset('assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/clockface/css/clockface.css')}}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block body%}
+    <br><br><br>
+    <div class="portlet light bordered form-fit">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-user font-blue-hoki"></i>
+                <span class="caption-subject font-blue-hoki bold uppercase">modification jeu</span>
+                <span class="caption-helper"></span>
+            </div>
+            <div class="actions">
+                <div class=" col-md-9">
+                    <a class="btn green" href="{{ path('jeu_index') }}">retour a list <i class="fa fa-check"></i> </a>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <div class="portlet-body form">
+
+
+
+
+            <!-- BEGIN FORM-->
+            {{ form_start(edit_form,{'attr':{'class':'form-horizontal form-bordered form-label-stripped'}}) }}
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="control-label col-md-3">titre</label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.nom, {'attr': {'class': 'form-control','placeholder':'marque'}}) }}
+                        <span class="help-block"> titre de l'annonce </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Categorie</label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.categorie, {'attr': {'class': 'form-control','placeholder':'marque'}}) }}
+                        <span class="help-block">  </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Caracteristique </label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.caracteristique, {'attr': {'class': 'form-control','placeholder':'model'}}) }}
+                        <span class="help-block">  </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Description</label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.description, {'attr': {'class': 'form-control','placeholder':'Description'}}) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">date de sortie</label>
+                    <div class="col-md-9">
+                        <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" >
+                            {{ form_widget(edit_form.dateSortie, {'attr': {'class': 'form-control','placeholder':'annee'}}) }}
+                            <span class="input-group-btn"><button class="btn default" type="button"><i class="fa fa-calendar"></i></button></span>
+                        </div>
+                        <!-- /input-group -->
+                        <span class="help-block"> Selection de date </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">model</label>
+                    <div class="col-md-9">
+                        <style>
+                            .fileContainer {
+                                overflow: hidden;
+                                position: relative;
+                            }
+
+                            .fileContainer [type=file] {
+                                cursor: inherit;
+                                display: block;
+                                font-size: 999px;
+                                filter: alpha(opacity=0);
+                                min-height: 100%;
+                                min-width: 100%;
+                                opacity: 0;
+                                position: absolute;
+                                right: 0;
+                                text-align: right;
+                                top: 0;
+                            }
+                        </style>
+                        <!-- The fileinput-button span is used to style the file input field as button -->
+                        <button class="btn default">
+                            <div>
+                                {{ form_widget(edit_form.imageFile)}}</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Historique </label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.historique, {'attr': {'class': 'form-control','placeholder':'model'}}) }}
+                        <span class="help-block"> </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Evolution </label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.evaluation, {'attr': {'class': 'form-control','placeholder':'model'}}) }}
+                        <span class="help-block"> </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Lien </label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.lien, {'attr': {'class': 'form-control','placeholder':'model'}}) }}
+                        <span class="help-block">  </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">prix </label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prix, {'attr': {'class': 'form-control','placeholder':'model'}}) }}
+                        <span class="help-block">  </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Plateform </label>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.plateforme, {'attr': {'class': 'form-control','placeholder':'model'}}) }}
+                        <span class="help-block"> </span>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn green">
+                            <i class="fa fa-check"></i> envoyer</button>
+                        <button type="button" class="btn default">annuler</button>
+                        {{ form_end(edit_form) }}
+
+                        <div class="col-md-offset-6 ">
+                            {{ form_start(delete_form,{'attr':{'class':'form-horizontal form-bordered form-label-stripped'}}) }}
+                            <button type="submit" class="btn green">
+                                <i class="fa fa-check"></i> supprimer</button>
+                            {{ form_end(delete_form) }}</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- END FORM-->
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+{% block javascriptjeu %}
+    <script src="{{ asset('assets/global/plugins/bootstrap-daterangepicker/moment.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/clockface/js/clockface.js')}}" type="text/javascript"></script>
+
+        <script src="{{ asset('assets/pages/scripts/components-date-time-pickers.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('assets/pages/scripts/form-samples.min.js') }}" type="text/javascript"></script>
+    {% endblock %}
+
+

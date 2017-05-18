@@ -1,0 +1,40 @@
+{% extends "base2.html.twig" %}
+
+{% block body %}
+
+
+
+    <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+        <div class="panel-heading templatemo-position-relative">
+            <h2>Signlement Sujet Du Forum </h2>
+        </div>
+        <table class="table table-striped table-bordered" border="1">
+
+            <tr  class="panel-heading templatemo-position-relative">
+                <div >
+                    <td > <span>Cause</span></td>
+                    <td><span> Sujet</span></td>
+                    <td><span> Membre </span></td>
+                    <td><span> Status </span></td>
+                    </div>
+            </tr>
+    {% for n in sign %}
+
+                <tr>
+                    <div>
+
+                        <td><a href="#">{{ n.cause }} </a></td>
+                        <td>  <span>{{ n.idsujet.titre }}</span></td>
+                        <td><span>{{ n.idmembre.username  }}</span></td>
+                        <td><i class="fa fa-check"><a href="{{ path('esprit_game_hub_Accepter' ,{'id':n.idsujet.id}) }}">Accepter </a></i></td>
+                        <td><i class="fa fa-crosshairs"><a href="{{ path('esprit_game_hub_Refuser',{'id':n.id}) }}">Refuser</a></i></td>
+
+                    </div>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
+    </div>
+{% endblock body %}

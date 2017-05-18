@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+ {% block ssjeu %}
+     <link href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/filter.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/owl.carousel.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/hover.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/portfolio.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/components.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/cubeportfolio.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/ahlem/css/cubeportfolio.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/fancybox/source/jquery.fancybox.css')}}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
+     <link href="{{ asset('assets/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
+     <!-- END THEME GLOBAL STYLES -->
+     <!-- BEGIN PAGE LEVEL STYLES -->
+     <link href="{{ asset('assets/apps/css/inbox.min.css') }}" rel="stylesheet" type="text/css" />
+     <!-- END PAGE LEVEL STYLES -->
+     <!-- BEGIN THEME LAYOUT STYLES -->
+     <link href="{{ asset('assets/layouts/layout4/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/layouts/layout4/css/themes/light.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
+     <link href="{{ asset('assets/layouts/layout4/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
+ {% endblock %}
+{% block body %}
+    <br><br>
+    <div class="portlet light bordered form-fit">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-user font-blue-hoki"></i>
+                <span class="caption-subject font-blue-hoki bold uppercase">detail du jeu</span>
+                <span class="caption-helper"></span>
+            </div>
+            <div class="actions">
+                <div class="row">
+                    <a href="{{ path('jeu_index') }}" class="btn green">retour a la list
+                        <i class="icon-cloud-upload"></i>
+                    </a>
+                    {% if is_granted('ROLE_ADMIN')  %}
+                    <a href="{{ path('jeu_edit', { 'id': jeu.id }) }}" class="btn green">modification
+                        {% endif %}
+                        <i class="icon-wrench"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="inputs">
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form action="#" class="form-horizontal form-bordered form-row-stripped">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Titre</label>
+                        <div class="col-md-6">
+                            {{ jeu.nom }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Annee de production</label>
+                        <div class="col-md-6">
+                            {% if jeu.dateSortie %}{{ jeu.dateSortie|date('Y-m-d') }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Evaluation</label>
+                        <div class="col-md-6">
+                            {{ jeu.evaluation }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Lien</label>
+                        <div class="col-md-6">
+                            {{ jeu.lien }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Plateform</label>
+                        <div class="col-md-6">
+                            <p>platform:{{ jeu.plateforme }}</p> <p>caracteristique:{{ jeu.caracteristique }}</p> <p> category :{{ jeu.categorie }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">prix jeu</label>
+                        <div class="col-md-6">
+                            {{ jeu.prix }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Historique</label>
+                        <div class="col-md-6">
+                            {{ jeu.historique }}
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                {{ form_start(delete_form,{'attr':{'class':'form-horizontal form-bordered form-label-stripped'}}) }}
+                                {% if is_granted('ROLE_ADMIN')  %}
+                                <button type="submit" class="btn green">
+                                    <i class="fa fa-check"></i> supprimer</button>
+                                {% endif %}
+                                {{ form_end(delete_form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+    <br> <br> <br> <br>
+{% endblock %}
+{% block javascriptjeu %}
+    <script src="{{ asset('assets/global/plugins/bootstrap-daterangepicker/moment.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/clockface/js/clockface.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/pages/scripts/components-date-time-pickers.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/pages/scripts/form-samples.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+

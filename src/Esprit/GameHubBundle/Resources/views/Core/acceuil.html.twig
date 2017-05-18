@@ -1,0 +1,90 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+
+
+    <!-- Container (The Band Section) -->
+    <div id="about" class="container text-center">
+
+        <h3>THE GAME HUB</h3>
+        <p><em>Welcome to the Game Hub</em></p>
+        <p>The Game Hub is a repository of Wikia sites, run by dedicated fans on the network.
+            Gamers from all over the globe contribute their knowledge and insights about MMOs,
+            RPGs, Shooters, and more types of games. Here we try to highlight the best of those
+            sites, while also providing direct access to our varied mobile applications,
+            exposure to Kickstarter games, and our gaming footers.</p>
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="text-center"><strong> Call of Duty: Black Ops III</strong></p><br>
+                <a href="#demo" data-toggle="collapse">
+                    <img src="{{ asset('template/images/image2.jpg') }}" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo" class="collapse">
+                    <p> Call of Duty: Black Ops III</p>
+                    <p>And I will have my revenge! </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p class="text-center"><strong>Assassin's Creed</strong></p><br>
+                <a href="#demo2" data-toggle="collapse">
+                    <img src="{{ asset('template/images/image1.jpg') }}" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo2" class="collapse">
+                    <p>Assassin's Creed</p>
+                    <p>We work in the dark to serve the light.</p>
+                    <p> We are assassins.</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p class="text-center"><strong>World Of Warcraft</strong></p><br>
+                <a href="#demo3" data-toggle="collapse">
+                    <img src="{{ asset('template/images/image3.jpg') }}" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo3" class="collapse">
+                    <p>World Of Warcraft</p>
+                    <p>"See your world through my eyes: A universe so vast as to be immeasurable - incomprehensible even to
+                        your greatest minds."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Container (Contact Section) -->
+    <div id="contact" class="container">
+        <h3 class="text-center">Contact</h3>
+        <p class="text-center"><em>We love our fans!</em></p>
+
+        <div class="row">
+            <div class="col-md-4">
+                <p>Fan? Drop a note.</p>
+                <p><span class="glyphicon glyphicon-map-marker"></span>Tunis, Ariana</p>
+                <p><span class="glyphicon glyphicon-phone"></span>Phone: +216 20 263 263</p>
+                <p><span class="glyphicon glyphicon-envelope"></span>Email: gamehub@esprit.com</p>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                    </div>
+                </div>
+                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <button class="btn pull-right" type="submit">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

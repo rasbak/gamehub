@@ -1,0 +1,40 @@
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+<br><br>
+<div class="bg-success">
+
+
+    <table class="table" border="1">
+      <tr bgcolor="#00ced1">
+          <td> <span>Sujet</span>
+          </td>
+
+<td><span class="blog-post">  Contenue
+       </span></td>
+      </tr>
+       {%  for n in forum %}
+
+           <a href="#">  <tr>
+            <div>
+
+                <td> <h4><a href="{{ path('esprit_game_hub_Sujet',{'id': n.id}) }}" ><span> {{ n.titre }}</span></a></h4><br>
+            <span class="blog-post">{{ n.membreId.username }}</span></td>
+              <td> <span class="blog-post">{{ n.contenu }}</span></td>
+
+            </div>
+          </tr> </a>
+
+       {% endfor %}
+
+    </table>
+</div>
+    <div class="banner-bot">
+        <a href="{{ path('esprit_game_hub_Ajouter') }}">
+            <input type="button" value="Ajouter Sujet">
+        </a>
+
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock body %}

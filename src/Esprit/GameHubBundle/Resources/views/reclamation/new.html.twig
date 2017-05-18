@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+        {% block bgbody %}
+            body{
+            background-image: url({{ asset("images/new.jpg") }});
+
+            padding-top: 50px;
+            }
+        {% endblock %}
+{% block body %}
+    <h1>Reclamation creation</h1>
+
+<div class="well" style="filter:alpha(opacity=50); opacity:0.8;">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.sujet, "Sujet : ", {'label_attr': {'class': 'col-sm-3  control-label'}}) }}
+
+        {{ form_errors(form.sujet) }}
+
+        <div class="col-sm-4">
+            {{ form_widget(form.sujet, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.contenu, "contenu : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.contenu) }}
+
+        <div class="col-sm-4">
+            {{ form_widget(form.contenu, {'attr': {'class': 'form-control','rows' : '10','cols' : '30'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Mot de passe du mail</label>
+
+        <div class="col-sm-4">
+            <input title="pass" type="password" class="form-control">
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group" align="middle">
+        <button type="submit"  class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span> Envoyer</button>
+    </div>
+    {{ form_end(form) }}
+
+
+</div>
+    <br> <br> <br> <br> <br> <br><br> <br> <br>
+{% endblock %}

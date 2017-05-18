@@ -1,0 +1,288 @@
+{% extends 'base.html.twig' %}
+        {% block bgbody %}
+            body{
+            background-image: url({{ asset("images/backgroundRegister2.png") }});
+
+            padding-top: 50px;
+            }
+        {% endblock %}
+
+{% block body %}
+    <h1>Accessoire</h1>
+
+
+    <div  class="well" style="filter:alpha(opacity=50); opacity:0.8;">
+
+
+        <div class="form-group">
+            {{ accessoire.nomProduit }}
+            <div class="col-sm-4">
+                <strong> Nom du accessoire :</strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ accessoire.prixProduit }}
+            <div class="col-sm-4">
+                <strong>     Prix du Produit :</strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            {% if accessoire.dateSortie %}{{ accessoire.dateSortie|date('Y-m-d') }}{% endif %}
+            <div class="col-sm-4">
+                <strong>     Date :</strong>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <a><img height="187" width="150" src='{{ asset("tsawer/"~ accessoire.longueur)}}' /></a>
+            <div class="col-sm-4">
+                <strong>     Image :</strong>
+            </div>
+        </div>
+
+        <div class="form-group" >
+            <a href="" id="type"> {{ accessoire.typeProduit }}</a>
+
+            <div class="col-sm-4">
+                <strong>     Type du accessoire :</strong>
+            </div>
+        </div>
+
+        {% if accessoire.typeProduit =="Pc" %}
+        <div id="PC" >
+
+        <div class="form-group">
+            <a href=""> {{ accessoire.processeurP }}</a>
+
+            <div class="col-sm-4">
+                <strong>   Processeur du pc :</strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href=""> {{ accessoire.disqueDurP }}</a>
+
+            <div class="col-sm-4">
+                <strong>   Disque dur du pc :</strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href=""> {{ accessoire.memoireP }}</a>
+
+            <div class="col-sm-4">
+                <strong>   Memoire du pc :</strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href=""> {{ accessoire.carteGraphiqueP }}</a>
+
+            <div class="col-sm-4">
+                <strong>   Carte graphique du pc :</strong>
+            </div>
+        </div>
+
+        </div>
+
+
+        {% endif %}
+
+        {% if accessoire.typeProduit =="Souris" %}
+        <div id="Souris" >
+
+            <div class="form-group">
+            <a href=""> {{ accessoire.nomSouris }}</a>
+
+            <div class="col-sm-4">
+                <strong>   Nom de la souris :</strong>
+            </div>
+        </div>
+
+                <div class="form-group">
+                    <a href=""> {{ accessoire.poids }}</a>
+
+                    <div class="col-sm-4">
+                        <strong>   Poids :</strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <a href=""> {{ accessoire.longueurCable }}</a>
+
+                    <div class="col-sm-4">
+                        <strong>   Longueur du cable :</strong>
+                    </div>
+                </div>
+
+        </div>
+        {% endif %}
+
+        {% if accessoire.typeProduit =="Casque" %}
+        <div id="Casque" >
+
+        <div class="form-group">
+            <a href=""> {{ accessoire.typeCasque }}</a>
+
+            <div class="col-sm-4">
+                <strong>   Type du casque :</strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href=""> {{ accessoire.systemAcoustique }}</a>
+
+            <div class="col-sm-4">
+                <strong>   System Acoustique :</strong>
+            </div>
+        </div>
+
+
+            <div class="form-group">
+                <a href=""> {{ accessoire.nomCasque }}</a>
+
+                <div class="col-sm-4">
+                    <strong>   Nom du casque :</strong>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        {% if accessoire.typeProduit =="Clavier" %}
+
+        <div id="Clavier" >
+
+        <div class="form-group">
+            <a href=""> {{ accessoire.nomClavier }}</a>
+
+            <div class="col-sm-4">
+                <strong>   Nom du clavier :</strong>
+            </div>
+        </div>
+
+
+                <div class="form-group">
+                    <a href=""> {{ accessoire.poids }}</a>
+
+                    <div class="col-sm-4">
+                        <strong>   Poids :</strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <a href=""> {{ accessoire.longueurCable }}</a>
+
+                    <div class="col-sm-4">
+                        <strong>   Longueur du cable :</strong>
+                    </div>
+                </div>
+
+        </div>
+        {% endif %}
+{#
+        {% if accessoire.typeProduit =="Clavier" | accessoire.typeProduit =="Souris" %}
+        <div id="commun" style="display: none;">
+            <div class="form-group">
+                <a href=""> {{ accessoire.poids }}</a>
+
+                <div class="col-sm-4">
+                    <strong>   Poids :</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <a href=""> {{ accessoire.longueurCable }}</a>
+
+                <div class="col-sm-4">
+                    <strong>   Longueur du cable :</strong>
+                </div>
+            </div>
+        </div>
+        {% endif %}#}
+        <div align="middle">
+
+       <a  data-toggle="modal"  class="btn btn-danger" href="{{ path('accessoire_edit', { 'id': accessoire.id }) }}">
+                <span class="glyphicon"></span> Edit</a>
+{#
+            {{ form_start(delete_form) }}#}
+
+            <a class="btn btn-danger" href="{{ path('accessoire_delete', { 'id': accessoire.id }) }}">
+                <span class="glyphicon glyphicon-trash"></span> Effacer
+            </a>
+        {#    {{ form_end(delete_form) }}#}
+
+        </div>
+
+    </div>
+
+
+<div align="middle">
+    <a  data-toggle="modal"  class="btn btn-danger" href="{{ path('accessoire_index') }}">
+        <span class="glyphicon"></span>Retour à la liste</a>
+</div>
+
+{#
+
+    <script type="text/javascript">
+
+
+        $( document ).ready(function () { function selectionner() {
+            var pc = document.getElementById("PC");
+            var souris = document.getElementById("Souris");
+            var Casque = document.getElementById("Casque");
+            var Clavier = document.getElementById("Clavier");
+            var commun = document.getElementById("commun");
+
+            var cb = document.getElementById("type");
+
+            if (cb.value=="Selectionner un type") {
+                pc.style.display = "none";
+                souris.style.display="none";
+                Casque.style.display="none";
+                commun.style.display = "none";
+                Clavier.style.display="none"
+            }
+            if (cb.value=="Pc") {
+                pc.style.display = "block";
+                souris.style.display="none";
+                Casque.style.display="none";
+                commun.style.display = "none";
+                Clavier.style.display="none"
+            }
+            if (cb.value=="Souris") {
+                pc.style.display = "none";
+                souris.style.display = "block";
+                commun.style.display = "block";
+                Casque.style.display = "none";
+                Clavier.style.display = "none"
+            }
+            if (cb.value=="Casque") {
+                pc.style.display = "none";
+                souris.style.display = "none";
+                Casque.style.display = "block";
+                commun.style.display = "none";
+                Clavier.style.display = "none"
+            }
+            if (cb.value=="Clavier") {
+                pc.style.display = "none";
+                souris.style.display="none";
+                Casque.style.display="none";
+                commun.style.display = "block";
+                Clavier.style.display = "block";
+            }
+
+        }
+        });
+
+
+    </script>
+#}
+
+    <br><br><br><br><br><br><br><br>
+
+{% endblock %}

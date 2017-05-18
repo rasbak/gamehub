@@ -1,0 +1,34 @@
+accessoire_index:
+    path:     /
+    defaults: { _controller: "EspritGameHubBundle:Accessoire:index" }
+    methods:  GET
+
+accessoire_show:
+    path:     /{id}/show
+    defaults: { _controller: "EspritGameHubBundle:Accessoire:show" }
+    methods:  GET
+
+accessoire_new:
+    path:     /new
+    defaults: { _controller: "EspritGameHubBundle:Accessoire:new" }
+    methods:  [GET, POST]
+
+accessoire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EspritGameHubBundle:Accessoire:edit" }
+    methods:  [GET, POST]
+
+accessoire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EspritGameHubBundle:Accessoire:delete" }
+    methods:
+
+accessoire_catalogue:
+    path:     /catalogue
+    defaults: { _controller: "EspritGameHubBundle:Accessoire:catalogue" }
+
+
+
+accessoireDetails:
+    path :    /accessoireDetails
+    defaults: { _controller: EspritGameHubBundle:Accessoire:accessoireDetails }
